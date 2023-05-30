@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sentiment Analysis App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+
+      h1 {
+        font-size: 36px;
+        color: #007bff;
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      form {
+        margin: 50px auto;
+        width: 80%;
+        max-width: 600px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+      }
+
+      label {
+        font-size: 20px;
+        color: #333;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 5px;
+        border: none;
+        background-color: #f2f2f2;
+        resize: none;
+      }
+
+      input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        font-size: 20px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: inline-block;
+        margin-bottom: 5px;
+      }
+
+      .form-group input {
+        width: 100%;
+        font-size: 18px;
+        border-radius: 5px;
+        border: none;
+        background-color: #f2f2f2;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border: 2px solid #007bff;
+      }
+
+      .form-group textarea:focus {
+        outline: none;
+        border: 2px solid #007bff;
+      }
+
+      .form-group.error input,
+      .form-group.error textarea {
+        border: 2px solid #dc3545;
+      }
+
+      .form-group.error span {
+        font-size: 14px;
+        color: #dc3545;
+        display: block;
+        margin-top: 5px;
+      }
+
+      p {
+        font-size: 24px;
+        color: #28a745;
+        text-align: center;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sentiment Analysis App</h1>
+    <form action="{{ url_for('predict') }}" method="post">
+      <div class="form-group">
+        <label for="text">Enter some text:</label>
+        <textarea
+          name="text"
+          rows="5"
+          cols="40"
+          placeholder="Enter text here..."
+        ></textarea>
+      </div>
+      <input type="submit" value="Submit" />
+    </form>
+    {% if prediction %}
+    <p>Prediction: {{ prediction }}</p>
+    {% endif %}
+  </body>
+</html>
